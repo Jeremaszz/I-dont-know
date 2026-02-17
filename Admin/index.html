@@ -8,13 +8,14 @@
     <title>Project System</title>
 
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelector('.Acesso button').addEventListener('click', function() {
-                window.location.href = 'admin-portal-index.html';
-            });
-        });
-    </script>
+     <!-- ligar um arquivo JavaScript externo -->
+     <script src="./console.js"></script>
+
+
+     <!-- código JavaScript para redirecionar para a página admin-portal-index.html ao clicar no botão de acesso -->
+    
+       
+   
 
 
 
@@ -65,6 +66,78 @@
 
 
         </div>
+
+
+
+
+
+        <script>
+            const AcessoButton = document.querySelector('.Acesso button');
+            const ADMIN_Username = 'admin';
+            const ADMIN_Password = 'admin123';
+
+
+            if (AcessoButton) {
+                AcessoButton.validateLogin = function() {
+                    const usernameInput = document.querySelector('.Usuario input');
+                    const passwordInput = document.querySelector('.Senha input');
+                    
+                    const username = usernameInput ? usernameInput.value : '';
+                    const password = passwordInput ? passwordInput.value : '';
+                    
+                    if (username === ADMIN_Username && password === ADMIN_Password) {
+                        window.location.href = 'admin-portal-index.html';
+                    } else {
+                        alert('Credenciais inválidas. Por favor, tente novamente.');
+                    }
+             }   };
+           
+
+
+        AcessoButton.addEventListener('click', function() {
+            AcessoButton.validateLogin();
+            AcessoButton.src = './index.html'; // Redireciona para a página principal após login
+        });
+
+
+
+if (AcessoButton) {
+    loginButton.validateLogin = function() {
+     const usernameinput = document.querySelector('.Usuario input');
+        const passwordinput = document.querySelector('.Senha input');
+
+        const username = usernameinput ? usernameinput.value : '';
+        const password = passwordinput ? passwordinput.value : '';
+
+        if (username === ADMIN_Username && password === ADMIN_Password) {
+            alert('Login Com Sucesso!');
+            window.location.href = './admin-portal-index.html'; // Redireciona para a página do portal admin após login
+        } else {
+            alert('Credenciais inválidas. Por favor, tente novamente.');
+        }
+    };  
+
+
+
+            AcessoButton.addEventListener('click', validateLogin);
+            AcessoButton.disable = true; // Desabilitar o botão de acesso por padrão
+                // Habilitar o botão de acesso apenas quando o checkbox for marcado
+            document.querySelector('.Checkbox input').addEventListener('change', function() {
+                AcessoButton.disabled = !this.checked;
+            });
+           
+           
+           if (document.querySelector('.Checkbox input').checked) {
+                AcessoButton.disabled = false; // Habilitar o botão de acesso se o checkbox estiver marcado
+            } else {
+                AcessoButton.disabled = true; // Manter o botão de acesso desabilitado se o checkbox não estiver marcado
+            }
+           
+            }
+            
+        </script>
+
+
 
 
 

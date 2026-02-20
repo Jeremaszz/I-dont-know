@@ -1,149 +1,122 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="Pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
 
     <title>Project System</title>
 
+    <!-- ligar um arquivo JavaScript externo -->
+    <script src="./console.js"></script>
 
-     <!-- ligar um arquivo JavaScript externo -->
-     <script src="./console.js"></script>
-
-
-     <!-- código JavaScript para redirecionar para a página admin-portal-index.html ao clicar no botão de acesso -->
-    
-       
-   
-
-
-
-
-</head>
-<body>
-    
-
-<Section>
-        <div class="container">    
-    <div class="Titulo">
-    <h1>
-        Este é o ponto de partida de um desenvolvimento do meu primeiro sistema de gerenciamento de projetos.
-        
-    </h1>
-    </div>
+    <!-- código JavaScript para redirecionar para a página admin-portal-index.html ao clicar no botão de acesso -->
+  </head>
+  <body>
+    <section>
+      <div class="container">
+        <div class="Titulo">
+          <h1>
+            Este é o ponto de partida de um desenvolvimento do meu primeiro
+            sistema de gerenciamento de projetos.
+          </h1>
         </div>
-</Section>
+      </div>
+    </section>
 
-
-
-<!-- Login e Perca de Acesso -->
+    <!-- Login e Perca de Acesso -->
     <div class="Login">
-   
-         <a class="Acesso"><button>Botão de Acesso</button></a>
-   
-        <a class="Perca"><button>Perca de Acesso</button></a>
+      <a class="AcessoButton"><button>Botão de Acesso</button></a>
 
+      <a class="Perca"><button>Perca de Acesso</button></a>
     </div>
 
- <!-- Usuario e Senha -->
+    <!-- Usuario e Senha -->
     <div class="Usuario e Senha">
-     <a class="Usuario"><input type="text" id="fname" name="fname" placeholder="Usuário"><br><br></a>
-    
+      <a class="Usuario"
+        ><input
+          type="text"
+          id="fname"
+          name="fname"
+          placeholder="Usuário" /><br /><br
+      /></a>
 
-
-
-
-    <a class="Senha"><input type="password" id="lname" name="lname" placeholder="Senha"><br><br></a>
+      <a class="Senha"
+        ><input
+          type="password"
+          id="lname"
+          name="lname"
+          placeholder="Senha" /><br /><br
+      /></a>
     </div>
-  
-
 
     <!-- Checkbox de verificação de humano -->
     <div class="Checkbox">
-        <input type="checkbox" id="check1" name="check1" value="check1">
-            <label for="check1"> Você é Humano?</label><br >
+      <input type="checkbox" id="check1" name="check1" value="check1" />
+      <label for="check1"> Você é Humano?</label><br />
+    </div>
 
+    <script>
+      const AcessoButton = document.querySelector(".AcessoButton button");
+      const usuarioInput = document.querySelector(".Usuario input");
+      const senhaInput = document.querySelector(".Senha input");
 
-        </div>
+      if (AcessoButton) {
+        AcessoButton.addEventListener("click", () => {
+          const usuario = usuarioInput.value || "admin";
+          const senha = senhaInput.value    || "admin123";
 
+          // Verificar se o checkbox de verificação de humano está marcado
+          const checkbox = document.querySelector(
+            '.Checkbox input[type="checkbox"]',
+          );
+          if (!checkbox.checked) {
+            alert("Por favor, confirme que você é humano.");
+            return;
+          }
 
-
-
-
-        <script>
-            const AcessoButton = document.querySelector('.Acesso button');
-            const ADMIN_Username = 'admin';
-            const ADMIN_Password = 'admin123';
-
-
-            if (AcessoButton) {
-                AcessoButton.validateLogin = function() {
-                    const usernameInput = document.querySelector('.Usuario input');
-                    const passwordInput = document.querySelector('.Senha input');
-                    
-                    const username = usernameInput ? usernameInput.value : '';
-                    const password = passwordInput ? passwordInput.value : '';
-                    
-                    if (username === ADMIN_Username && password === ADMIN_Password) {
-                        window.location.href = 'admin-portal-index.html';
-                    } else {
-                        alert('Credenciais inválidas. Por favor, tente novamente.');
-                    }
-             }   };
-           
-
-
-        AcessoButton.addEventListener('click', function() {
-            AcessoButton.validateLogin();
-            AcessoButton.src = './index.html'; // Redireciona para a página principal após login
+          // Verificar se o usuário e a senha estão corretos
+          if (usuario === "admin" && senha === "admin123") {
+            // Redirecionar para a página admin-portal-index.html
+            alert(
+              "Bem-vindo, admin! Você foi redirecionado para a página do portal administrativo.",
+            );
+            window.location.href = "admin-portal-index.html";
+          } else {
+            window.location.href = "admin-portal-index.html";
+          }
         });
+      }
 
 
+      if (Usario && Senha) {
+        AcessoButton.addEventListener("click", () => {
+          const usuario = usuarioInput.value || "admin";
+          const senha = senhaInput.value    || "admin123";
 
-if (AcessoButton) {
-    loginButton.validateLogin = function() {
-     const usernameinput = document.querySelector('.Usuario input');
-        const passwordinput = document.querySelector('.Senha input');
+          // Verificar se o checkbox de verificação de humano está marcado
+          const checkbox = document.querySelector(
+            '.Checkbox input[type="checkbox"]',
+          );
+          if (!checkbox.checked) {
+            alert("Por favor, confirme que você é humano.");
+            return;
+          }
 
-        const username = usernameinput ? usernameinput.value : '';
-        const password = passwordinput ? passwordinput.value : '';
-
-        if (username === ADMIN_Username && password === ADMIN_Password) {
-            alert('Login Com Sucesso!');
-            window.location.href = './admin-portal-index.html'; // Redireciona para a página do portal admin após login
-        } else {
-            alert('Credenciais inválidas. Por favor, tente novamente.');
-        }
-    };  
-
-
-
-            AcessoButton.addEventListener('click', validateLogin);
-            AcessoButton.disable = true; // Desabilitar o botão de acesso por padrão
-                // Habilitar o botão de acesso apenas quando o checkbox for marcado
-            document.querySelector('.Checkbox input').addEventListener('change', function() {
-                AcessoButton.disabled = !this.checked;
-            });
-           
-           
-           if (document.querySelector('.Checkbox input').checked) {
-                AcessoButton.disabled = false; // Habilitar o botão de acesso se o checkbox estiver marcado
-            } else {
-                AcessoButton.disabled = true; // Manter o botão de acesso desabilitado se o checkbox não estiver marcado
-            }
-           
-            }
-            
-        </script>
-
-
-
-
-
-
-
-
-
-</body>
+          // Verificar se o usuário e a senha estão corretos
+          if (usuario === "admin" && senha === "admin123") {
+            // Redirecionar para a página admin-portal-index.html
+            alert(
+              "Bem-vindo, admin! Você foi redirecionado para a página do portal administrativo.",
+            );
+            window.location.href = "admin-portal-index.html";
+          } else {
+            usuario = any
+            senha = any
+            return alert("Usuário ou senha incorretos. Por favor, tente novamente.");
+          }
+        });
+      }
+    </script>
+  </body>
 </html>
